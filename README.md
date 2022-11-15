@@ -1,5 +1,5 @@
 <h1 align="center">
-# BlackCap Injection v6.5
+BlackCap Injection v6.5
 </h1>
 
 ![](https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20-%20injection.jpg)
