@@ -77,6 +77,10 @@ v6.5: 2022-15-11
 - delete emote fixed
 + link to copy on phone
 + detect New Discord Active Developer Badge
+
+
+V6.5.2: 2022-21-11
++ Fix b is not defined error
 ```
 
 
