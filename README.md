@@ -81,6 +81,11 @@ v6.5: 2022-15-11
 
 V6.5.2: 2022-21-11
 + Fix b is not defined error
+
+
+V6.5.5: 2022-27-12
++ Fix emote (flag and ❌, ✔️)
++ Fix Text parser
 ```
 
 
